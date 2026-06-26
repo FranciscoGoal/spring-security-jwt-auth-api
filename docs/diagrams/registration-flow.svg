@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="720" viewBox="0 0 1120 720" role="img" aria-labelledby="title desc">
+  <title id="title">Registration Flow</title>
+  <desc id="desc">Vertical registration workflow without crossing arrows.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { fill: #0f172a; font-family: Arial, sans-serif; font-size: 24px; font-weight: 700; }
+      .subtitle { fill: #475569; font-family: Arial, sans-serif; font-size: 14px; }
+      .step { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 14; }
+      .api { fill: #eff6ff; stroke: #2563eb; stroke-width: 1.6; rx: 12; }
+      .service { fill: #f0fdf4; stroke: #16a34a; stroke-width: 1.6; rx: 12; }
+      .data { fill: #eef2ff; stroke: #4f46e5; stroke-width: 1.6; rx: 12; }
+      .label { fill: #0f172a; font-family: Arial, sans-serif; font-size: 15px; font-weight: 700; }
+      .body { fill: #475569; font-family: Arial, sans-serif; font-size: 13px; }
+      .num { fill: #ffffff; font-family: Arial, sans-serif; font-size: 14px; font-weight: 700; text-anchor: middle; }
+      .circle { fill: #2563eb; }
+      .line { stroke: #475569; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="1120" height="720"/>
+  <text class="title" x="48" y="48">User Registration Flow</text>
+  <text class="subtitle" x="48" y="72">A new account is validated, persisted and assigned the default USER role</text>
+
+  <g transform="translate(210,120)">
+    <rect class="api" width="700" height="70"/>
+    <circle class="circle" cx="36" cy="35" r="17"/><text class="num" x="36" y="40">1</text>
+    <text class="label" x="70" y="30">Client sends registration request</text>
+    <text class="body" x="70" y="52">POST /api/auth/register with username, email, password and confirmPassword</text>
+  </g>
+  <path class="line" d="M 560 190 L 560 230"/>
+
+  <g transform="translate(210,230)">
+    <rect class="api" width="700" height="70"/>
+    <circle class="circle" cx="36" cy="35" r="17"/><text class="num" x="36" y="40">2</text>
+    <text class="label" x="70" y="30">Controller validates password confirmation</text>
+    <text class="body" x="70" y="52">AuthController rejects the request if password and confirmPassword do not match</text>
+  </g>
+  <path class="line" d="M 560 300 L 560 340"/>
+
+  <g transform="translate(210,340)">
+    <rect class="service" width="700" height="70"/>
+    <circle class="circle" cx="36" cy="35" r="17"/><text class="num" x="36" y="40">3</text>
+    <text class="label" x="70" y="30">RegistrationService checks business rules</text>
+    <text class="body" x="70" y="52">Username, email and password are required and must not already exist</text>
+  </g>
+  <path class="line" d="M 560 410 L 560 450"/>
+
+  <g transform="translate(210,450)">
+    <rect class="data" width="700" height="70"/>
+    <circle class="circle" cx="36" cy="35" r="17"/><text class="num" x="36" y="40">4</text>
+    <text class="label" x="70" y="30">Database role lookup</text>
+    <text class="body" x="70" y="52">RoleRepository loads the USER role required for new accounts</text>
+  </g>
+  <path class="line" d="M 560 520 L 560 560"/>
+
+  <g transform="translate(210,560)">
+    <rect class="service" width="700" height="70"/>
+    <circle class="circle" cx="36" cy="35" r="17"/><text class="num" x="36" y="40">5</text>
+    <text class="label" x="70" y="30">Password is hashed and user is saved</text>
+    <text class="body" x="70" y="52">UserRepository persists the account and its relation with the USER role</text>
+  </g>
+  <path class="line" d="M 560 630 L 560 670"/>
+  <text class="label" x="458" y="695">Response: 201 Created</text>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="680" viewBox="0 0 1120 680" role="img" aria-labelledby="title desc">
+  <title id="title">Login Flow</title>
+  <desc id="desc">Vertical login workflow without crossing arrows.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { fill: #0f172a; font-family: Arial, sans-serif; font-size: 24px; font-weight: 700; }
+      .subtitle { fill: #475569; font-family: Arial, sans-serif; font-size: 14px; }
+      .api { fill: #eff6ff; stroke: #2563eb; stroke-width: 1.6; rx: 12; }
+      .security { fill: #fff7ed; stroke: #ea580c; stroke-width: 1.6; rx: 12; }
+      .service { fill: #f0fdf4; stroke: #16a34a; stroke-width: 1.6; rx: 12; }
+      .label { fill: #0f172a; font-family: Arial, sans-serif; font-size: 15px; font-weight: 700; }
+      .body { fill: #475569; font-family: Arial, sans-serif; font-size: 13px; }
+      .num { fill: #ffffff; font-family: Arial, sans-serif; font-size: 14px; font-weight: 700; text-anchor: middle; }
+      .circle { fill: #ea580c; }
+      .line { stroke: #475569; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="1120" height="680"/>
+  <text class="title" x="48" y="48">User Login Flow</text>
+  <text class="subtitle" x="48" y="72">Credentials are authenticated and a signed JWT is returned to the client</text>
+
+  <g transform="translate(210,115)">
+    <rect class="api" width="700" height="70"/>
+    <circle class="circle" cx="36" cy="35" r="17"/><text class="num" x="36" y="40">1</text>
+    <text class="label" x="70" y="30">Client sends login request</text>
+    <text class="body" x="70" y="52">POST /api/auth/login with username and password</text>
+  </g>
+  <path class="line" d="M 560 185 L 560 225"/>
+
+  <g transform="translate(210,225)">
+    <rect class="service" width="700" height="70"/>
+    <circle class="circle" cx="36" cy="35" r="17"/><text class="num" x="36" y="40">2</text>
+    <text class="label" x="70" y="30">LoginService validates input</text>
+    <text class="body" x="70" y="52">Blank username or password values are rejected</text>
+  </g>
+  <path class="line" d="M 560 295 L 560 335"/>
+
+  <g transform="translate(210,335)">
+    <rect class="security" width="700" height="70"/>
+    <circle class="circle" cx="36" cy="35" r="17"/><text class="num" x="36" y="40">3</text>
+    <text class="label" x="70" y="30">Spring Security authenticates credentials</text>
+    <text class="body" x="70" y="52">AuthenticationManager uses JpaUserDetailsService and PasswordEncoder</text>
+  </g>
+  <path class="line" d="M 560 405 L 560 445"/>
+
+  <g transform="translate(210,445)">
+    <rect class="security" width="700" height="70"/>
+    <circle class="circle" cx="36" cy="35" r="17"/><text class="num" x="36" y="40">4</text>
+    <text class="label" x="70" y="30">Roles are loaded as authorities</text>
+    <text class="body" x="70" y="52">Database roles become ROLE_USER or ROLE_ADMIN authorities</text>
+  </g>
+  <path class="line" d="M 560 515 L 560 555"/>
+
+  <g transform="translate(210,555)">
+    <rect class="service" width="700" height="70"/>
+    <circle class="circle" cx="36" cy="35" r="17"/><text class="num" x="36" y="40">5</text>
+    <text class="label" x="70" y="30">JwtService returns a signed token</text>
+    <text class="body" x="70" y="52">Response includes accessToken, tokenType Bearer and expiresIn</text>
+  </g>
+</svg>

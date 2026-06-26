@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="720" viewBox="0 0 1120 720" role="img" aria-labelledby="title desc">
+  <title id="title">Spring Security JWT API Architecture</title>
+  <desc id="desc">Clean layered architecture diagram for a Spring Boot authentication API.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { fill: #0f172a; font-family: Arial, sans-serif; font-size: 24px; font-weight: 700; }
+      .subtitle { fill: #475569; font-family: Arial, sans-serif; font-size: 14px; }
+      .layer { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 16; }
+      .box { fill: #eff6ff; stroke: #2563eb; stroke-width: 1.6; rx: 12; }
+      .service { fill: #f0fdf4; stroke: #16a34a; stroke-width: 1.6; rx: 12; }
+      .security { fill: #fff7ed; stroke: #ea580c; stroke-width: 1.6; rx: 12; }
+      .data { fill: #eef2ff; stroke: #4f46e5; stroke-width: 1.6; rx: 12; }
+      .label { fill: #0f172a; font-family: Arial, sans-serif; font-size: 15px; font-weight: 700; text-anchor: middle; }
+      .small { fill: #475569; font-family: Arial, sans-serif; font-size: 12px; text-anchor: middle; }
+      .layerText { fill: #334155; font-family: Arial, sans-serif; font-size: 13px; font-weight: 700; }
+      .line { stroke: #475569; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1120" height="720"/>
+  <text class="title" x="48" y="48">Spring Security JWT Auth API</text>
+  <text class="subtitle" x="48" y="72">Layered architecture with public auth endpoints, JWT security and MySQL persistence</text>
+
+  <rect class="layer" x="80" y="115" width="960" height="85"/>
+  <text class="layerText" x="105" y="145">Client</text>
+  <rect class="box" x="440" y="138" width="240" height="40"/>
+  <text class="label" x="560" y="164">HTTP Client</text>
+
+  <rect class="layer" x="80" y="235" width="960" height="85"/>
+  <text class="layerText" x="105" y="265">Controller</text>
+  <rect class="box" x="440" y="258" width="240" height="40"/>
+  <text class="label" x="560" y="284">AuthController</text>
+
+  <rect class="layer" x="80" y="355" width="960" height="105"/>
+  <text class="layerText" x="105" y="385">Services</text>
+  <rect class="service" x="290" y="390" width="210" height="42"/>
+  <text class="label" x="395" y="416">RegistrationService</text>
+  <rect class="service" x="620" y="390" width="210" height="42"/>
+  <text class="label" x="725" y="416">LoginService</text>
+
+  <rect class="layer" x="80" y="495" width="960" height="105"/>
+  <text class="layerText" x="105" y="525">Security</text>
+  <rect class="security" x="210" y="530" width="210" height="42"/>
+  <text class="label" x="315" y="556">SecurityConfig</text>
+  <rect class="security" x="455" y="530" width="210" height="42"/>
+  <text class="label" x="560" y="556">JpaUserDetailsService</text>
+  <rect class="security" x="700" y="530" width="210" height="42"/>
+  <text class="label" x="805" y="556">JwtService</text>
+
+  <rect class="layer" x="80" y="635" width="960" height="55"/>
+  <text class="layerText" x="105" y="668">Persistence</text>
+  <rect class="data" x="335" y="645" width="190" height="34"/>
+  <text class="label" x="430" y="668">Repositories</text>
+  <rect class="data" x="595" y="645" width="190" height="34"/>
+  <text class="label" x="690" y="668">MySQL</text>
+
+  <path class="line" d="M 560 178 L 560 257"/>
+  <path class="line" d="M 520 298 L 395 389"/>
+  <path class="line" d="M 600 298 L 725 389"/>
+  <path class="line" d="M 395 432 L 430 644"/>
+  <path class="line" d="M 725 432 L 560 529"/>
+  <path class="line" d="M 725 432 L 805 529"/>
+  <path class="line" d="M 560 572 L 430 644"/>
+  <path class="line" d="M 430 679 L 595 662"/>
+</svg>

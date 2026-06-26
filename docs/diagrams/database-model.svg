@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="520" viewBox="0 0 1120 520" role="img" aria-labelledby="title desc">
+  <title id="title">Database Model</title>
+  <desc id="desc">Entity relationship diagram for user, role and user_roles tables.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { fill: #0f172a; font-family: Arial, sans-serif; font-size: 24px; font-weight: 700; }
+      .subtitle { fill: #475569; font-family: Arial, sans-serif; font-size: 14px; }
+      .table { fill: #ffffff; stroke: #334155; stroke-width: 1.5; rx: 12; }
+      .head { fill: #eff6ff; stroke: #334155; stroke-width: 1.5; }
+      .join { fill: #f0fdf4; stroke: #334155; stroke-width: 1.5; }
+      .name { fill: #0f172a; font-family: Arial, sans-serif; font-size: 16px; font-weight: 700; text-anchor: middle; }
+      .field { fill: #334155; font-family: Arial, sans-serif; font-size: 13px; }
+      .key { fill: #1d4ed8; font-family: Arial, sans-serif; font-size: 12px; font-weight: 700; }
+      .rel { stroke: #475569; stroke-width: 2; fill: none; }
+      .card { fill: #475569; font-family: Arial, sans-serif; font-size: 12px; text-anchor: middle; }
+    </style>
+  </defs>
+  <rect class="bg" width="1120" height="520"/>
+  <text class="title" x="48" y="48">Database Model</text>
+  <text class="subtitle" x="48" y="72">Users and roles are connected through a many-to-many join table</text>
+
+  <rect class="table" x="80" y="130" width="285" height="260"/>
+  <rect class="head" x="80" y="130" width="285" height="48" rx="12"/>
+  <text class="name" x="222" y="160">user</text>
+  <text class="key" x="105" y="210">PK</text><text class="field" x="142" y="210">id BIGINT</text>
+  <text class="key" x="105" y="238">UK</text><text class="field" x="142" y="238">username VARCHAR(100)</text>
+  <text class="key" x="105" y="266">UK</text><text class="field" x="142" y="266">email VARCHAR(150)</text>
+  <text class="field" x="142" y="294">password VARCHAR(500)</text>
+  <text class="field" x="142" y="322">enabled BOOLEAN</text>
+  <text class="field" x="142" y="350">created_at DATETIME</text>
+
+  <rect class="table" x="435" y="170" width="250" height="180"/>
+  <rect class="join" x="435" y="170" width="250" height="48" rx="12"/>
+  <text class="name" x="560" y="200">user_roles</text>
+  <text class="key" x="460" y="255">PK/FK</text><text class="field" x="520" y="255">user_id BIGINT</text>
+  <text class="key" x="460" y="290">PK/FK</text><text class="field" x="520" y="290">role_id INT</text>
+
+  <rect class="table" x="755" y="170" width="255" height="180"/>
+  <rect class="head" x="755" y="170" width="255" height="48" rx="12"/>
+  <text class="name" x="882" y="200">role</text>
+  <text class="key" x="780" y="255">PK</text><text class="field" x="820" y="255">id INT</text>
+  <text class="key" x="780" y="290">UK</text><text class="field" x="820" y="290">name VARCHAR(20)</text>
+
+  <path class="rel" d="M 365 260 L 435 260"/>
+  <path class="rel" d="M 685 260 L 755 260"/>
+  <text class="card" x="400" y="247">1..N</text>
+  <text class="card" x="720" y="247">N..1</text>
+  <text class="card" x="560" y="430">Role-based access control is resolved from user_roles during authentication.</text>
+</svg>
